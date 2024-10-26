@@ -8,6 +8,8 @@ import { FormElement, Input } from "../../styles/form";
 import { BaseLinkGreen } from "../../styles/button";
 import { Link } from "react-router-dom";
 import { breakpoints, defaultTheme } from "../../styles/themes/default";
+import React, { useEffect, useState } from "react";
+import axios from "axios"; // Axios for API call
 
 const AccountScreenWrapper = styled.main`
   .address-list {
@@ -52,12 +54,44 @@ const AccountScreenWrapper = styled.main`
 const breadcrumbItems = [
   {
     label: "Home",
-    link: "/",
+    link: "/Home",
   },
   { label: "Account", link: "/account" },
 ];
 
 const AccountScreen = () => {
+  const [account, setAccount] = useState({
+    name: "",
+    email: "",
+    password:"",
+    phoneNumber: "",
+    address: "",
+  });
+
+  useEffect(() => {
+    const email = localStorage.getItem("email");
+    const token = localStorage.getItem("token"); // Retrieve the JWT token
+
+
+    if (email &&token) {
+      // Make API call to fetch account details based on the email
+      axios
+      .get(`http://localhost:5077/api/User/${email}`, {
+        headers: {
+          Authorization: `Bearer ${token}`, // Attach the token to the Authorization header
+        },
+      })
+      .then((response) => {
+  
+        setAccount(response.data); // Assuming the API returns the account details
+        console.log(response.data)
+      })
+      .catch((error) => {
+        console.error("Error fetching account details", error);
+        });
+    }
+  }, []);
+
   return (
     <AccountScreenWrapper className="page-py-spacing">
       <Container>
@@ -80,7 +114,7 @@ const AccountScreen = () => {
                     <Input
                       type="text"
                       className="form-elem-control text-outerspace font-semibold"
-                      value="Richard Doe"
+                      value={account.name}
                       readOnly
                     />
                     <button type="button" className="form-control-change-btn">
@@ -99,7 +133,7 @@ const AccountScreen = () => {
                     <Input
                       type="email"
                       className="form-elem-control text-outerspace font-semibold"
-                      value="richard@gmail.com"
+                      value={account.email}
                       readOnly
                     />
                     <button type="button" className="form-control-change-btn">
@@ -118,7 +152,7 @@ const AccountScreen = () => {
                     <Input
                       type="text"
                       className="form-elem-control text-outerspace font-semibold"
-                      value="+9686 6864 3434"
+                      value={account.phoneNumber  }
                       readOnly
                     />
                     <button type="button" className="form-control-change-btn">
@@ -137,7 +171,7 @@ const AccountScreen = () => {
                     <Input
                       type="password"
                       className="form-elem-control text-outerspace font-semibold"
-                      value="Pass Key"
+                      value={account.password}
                       readOnly
                     />
                     <button type="button" className="form-control-change-btn">
@@ -153,10 +187,10 @@ const AccountScreen = () => {
               <div className="address-list grid">
                 <div className="address-item grid">
                   <p className="text-outerspace text-lg font-semibold address-title">
-                    Richard Doe
+                    {account.name}
                   </p>
                   <p className="text-gray text-base font-medium address-description">
-                    1/4 Watson Street Flat, East Coastal Road, Ohio City
+                    {account.address}                  
                   </p>
                   <ul className="address-tags flex flex-wrap">
                     <li className="text-gray text-base font-medium inline-flex items-center justify-center">

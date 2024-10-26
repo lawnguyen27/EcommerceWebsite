@@ -86,6 +86,7 @@ const NavigationMenuWrapper = styled.nav`
     z-index: 999;
     display: none;
   }
+   
 `;
 
 const IconLinksWrapper = styled.div`
@@ -114,6 +115,10 @@ const IconLinksWrapper = styled.div`
   @media (max-width: ${breakpoints.xl}) {
     column-gap: 6px;
   }
+     .image{
+   width: 14px;
+    height: 14px;
+    }
 `;
 
 const Header = () => {
@@ -132,7 +137,7 @@ const Header = () => {
             >
               <i className="bi bi-list"></i>
             </button>
-            <SiteBrandWrapper to="/" className="inline-flex">
+            <SiteBrandWrapper to="/Home" className="inline-flex">
               <div className="brand-img-wrap flex items-center justify-center">
                 <img
                   className="site-brand-img"
@@ -140,7 +145,7 @@ const Header = () => {
                   alt="site logo"
                 />
               </div>
-              <span className="site-brand-text text-outerspace">achats.</span>
+              <span className="site-brand-text text-outerspace">Teamo</span>
             </SiteBrandWrapper>
           </div>
           <NavigationAndSearchWrapper className="flex items-center">
@@ -201,6 +206,14 @@ const Header = () => {
               } inline-flex items-center justify-center`}
             >
               <img src={staticImages.cart} alt="" />
+            </Link>
+            <Link
+              to="/"
+              className={`icon-link ${
+                location.pathname === "/logout" ? "active" : ""
+              } inline-flex items-center justify-center`}
+            >
+              <img className="image" src={staticImages.logout}  alt="" />
             </Link>
           </IconLinksWrapper>
         </div>

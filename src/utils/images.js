@@ -1,4 +1,4 @@
-import logo from "../assets/images/logo.png";
+import logo from "../assets/images/logo.jpg";
 
 // forms images
 import form_img1 from "../assets/images/form_img1.png";
@@ -15,7 +15,7 @@ import app_store from "../assets/images/app_store.jpg";
 import heart from "../assets/icons/heart.svg";
 import user from "../assets/icons/user.svg";
 import cart from "../assets/icons/cart.svg";
-
+import logout from"../assets/icons/logout.svg";
 // some random images
 import img1 from "../assets/images/img1.jpg";
 import img2 from "../assets/images/img2.jpg";
@@ -127,6 +127,7 @@ import paypass from "../assets/images/paypass.png";
 import confirmed_img from "../assets/images/confirmed_img.svg";
 
 export const staticImages = {
+  logout,
   logo,
   form_img1,
   form_img2,

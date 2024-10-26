@@ -24,7 +24,7 @@ import WishListEmpty from "./screens/user/WishListEmptyScreen";
 import Confirm from "./screens/user/ConfirmScreen";
 import Account from "./screens/user/AccountScreen";
 import Address from "./screens/user/AddressScreen";
-
+import HomeScreenAuth from "./screens/home/HomeScreenAuth";
 function App() {
   return (
     <>
@@ -33,7 +33,7 @@ function App() {
         <Routes>
           {/* main screens */}
           <Route path="/" element={<BaseLayout />}>
-            <Route index element={<Home />} />
+          <Route path="/Home" element={<HomeScreenAuth />} />
             <Route path="/product" element={<ProductList />} />
             <Route path="/product/details" element={<ProductDetails />} />
             <Route path="/cart" element={<Cart />} />
@@ -50,6 +50,7 @@ function App() {
 
           {/* auth screens */}
           <Route path="/" element={<AuthLayout />}>
+          <Route index element={<Home />} />
             <Route path="sign_in" element={<SignIn />} />
             <Route path="sign_up" element={<SignUp />} />
             <Route path="reset" element={<Reset />} />

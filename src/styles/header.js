@@ -29,7 +29,8 @@ export const SiteBrandWrapper = styled(Link)`
 
   .brand-img-wrap {
     img {
-      width: 28px;
+      width: 42px;
+      height: 42px;
     }
   }
 

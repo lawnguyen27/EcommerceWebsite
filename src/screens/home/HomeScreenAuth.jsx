@@ -10,11 +10,10 @@ import Feedback from "../../components/home/Feedback";
 
 const HomeScreenWrapper = styled.main``;
 
-const HomeScreen = () => {
+const HomeScreenAuth = () => {
   const token = localStorage.getItem("token");
   const email = localStorage.getItem("email");
-  localStorage.removeItem("token");
-  localStorage.removeItem("email");
+
   console.log(token,email)
   return (
     <HomeScreenWrapper>
@@ -31,4 +30,4 @@ const HomeScreen = () => {
   );
 };
 
-export default HomeScreen;
+export default HomeScreenAuth;

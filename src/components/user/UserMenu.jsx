@@ -2,7 +2,8 @@ import { Link, useLocation } from "react-router-dom";
 import styled from "styled-components";
 import Title from "../common/Title";
 import { breakpoints, defaultTheme } from "../../styles/themes/default";
-
+import React, { useEffect, useState } from "react";
+import axios from "axios"; // Axios for API call
 const NavMenuWrapper = styled.nav`
   margin-top: 32px;
   
@@ -65,9 +66,42 @@ const NavMenuWrapper = styled.nav`
 
 const UserMenu = () => {
   const location = useLocation();
+ 
+    const [account, setAccount] = useState({
+      name: "",
+      email: "",
+      password:"",
+      phoneNumber: "",
+      address: "",
+    });
+  
+    useEffect(() => {
+      const email = localStorage.getItem("email");
+      const token = localStorage.getItem("token"); // Retrieve the JWT token
+  
+  
+      if (email &&token) {
+        // Make API call to fetch account details based on the email
+        axios
+        .get(`http://localhost:5077/api/User/${email}`, {
+          headers: {
+            Authorization: `Bearer ${token}`, // Attach the token to the Authorization header
+          },
+        })
+        .then((response) => {
+    
+          setAccount(response.data); // Assuming the API returns the account details
+          console.log(response.data)
+        })
+        .catch((error) => {
+          console.error("Error fetching account details", error);
+          });
+      }
+    }, []);
+  
   return (
     <div>
-      <Title titleText={"Hello Richard"} />
+      <Title titleText={"Hello "+account.name} />
       <p className="text-base font-light italic">Welcome to your account.</p>
 
       <NavMenuWrapper>
@@ -141,5 +175,4 @@ const UserMenu = () => {
     </div>
   );
 };
-
 export default UserMenu;

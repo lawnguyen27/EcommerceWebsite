@@ -54,10 +54,14 @@ const SignInScreen = () => {
           email,
           password,
         });
-  
+        const { token } = response.data;
+
+        // Save token and user data in localStorage
+        localStorage.setItem("token", token);
+        localStorage.setItem("email", email);
         if (response.status === 200) {
           // Login success, redirect to another page (e.g., dashboard)
-          navigate("/"); // Replace "/dashboard" with the actual route
+          navigate("/Home"); // Replace "/dashboard" with the actual route
         } else {
           setError("Invalid login credentials");
         }
