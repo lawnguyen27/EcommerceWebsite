@@ -13,6 +13,7 @@ import axios from "axios"; // Axios for API call
 
 const AccountScreenWrapper = styled.main`
   .address-list {
+    padding-bottom: 16px;
     margin-top: 20px;
     grid-template-columns: repeat(2, 1fr);
     gap: 25px;
@@ -117,9 +118,9 @@ const AccountScreen = () => {
                       value={account.name}
                       readOnly
                     />
-                    <button type="button" className="form-control-change-btn">
+                    {/* <button type="button" className="form-control-change-btn">
                       Change
-                    </button>
+                    </button> */}
                   </div>
                 </FormElement>
                 <FormElement className="form-elem">
@@ -136,9 +137,9 @@ const AccountScreen = () => {
                       value={account.email}
                       readOnly
                     />
-                    <button type="button" className="form-control-change-btn">
+                    {/* <button type="button" className="form-control-change-btn">
                       Change
-                    </button>
+                    </button> */}
                   </div>
                 </FormElement>
                 <FormElement className="form-elem">
@@ -155,9 +156,9 @@ const AccountScreen = () => {
                       value={account.phoneNumber  }
                       readOnly
                     />
-                    <button type="button" className="form-control-change-btn">
+                    {/* <button type="button" className="form-control-change-btn">
                       Change
-                    </button>
+                    </button> */}
                   </div>
                 </FormElement>
                 <FormElement className="form-elem">
@@ -174,16 +175,15 @@ const AccountScreen = () => {
                       value={account.password}
                       readOnly
                     />
-                    <button type="button" className="form-control-change-btn">
+                    {/* <button type="button" className="form-control-change-btn">
                       Change
-                    </button>
+                    </button> */}
                   </div>
                 </FormElement>
               </div>
             </form>
             <div>
               <h4 className="title-sm">My Contact Addresss</h4>
-              <BaseLinkGreen to="/account/add">Add Address</BaseLinkGreen>
               <div className="address-list grid">
                 <div className="address-item grid">
                   <p className="text-outerspace text-lg font-semibold address-title">
@@ -200,55 +200,9 @@ const AccountScreen = () => {
                       Default billing address
                     </li>
                   </ul>
-                  <div className="address-btns flex">
-                    <Link
-                      to="/"
-                      className="text-base text-outerspace font-semibold"
-                    >
-                      Remove
-                    </Link>
-                    <div className="btn-separator"></div>
-                    <Link
-                      to="/"
-                      className="text-base text-outerspace font-semibold"
-                    >
-                      Edit
-                    </Link>
-                  </div>
-                </div>
-
-                <div className="address-item grid">
-                  <p className="text-outerspace text-lg font-semibold address-title">
-                    Richard Doe
-                  </p>
-                  <p className="text-gray text-base font-medium address-description">
-                    1/4 Watson Street Flat, East Coastal Road, Ohio City
-                  </p>
-                  <ul className="address-tags flex flex-wrap">
-                    <li className="text-gray text-base font-medium inline-flex items-center justify-center">
-                      Home
-                    </li>
-                    <li className="text-gray text-base font-medium inline-flex items-center justify-center">
-                      Default billing address
-                    </li>
-                  </ul>
-                  <div className="address-btns flex">
-                    <Link
-                      to="/"
-                      className="text-base text-outerspace font-semibold"
-                    >
-                      Remove
-                    </Link>
-                    <div className="btn-separator"></div>
-                    <Link
-                      to="/"
-                      className="text-base text-outerspace font-semibold"
-                    >
-                      Edit
-                    </Link>
-                  </div>
                 </div>
               </div>
+              <BaseLinkGreen to="/changeProfile">Edit Profile</BaseLinkGreen>
             </div>
           </UserContent>
         </UserDashboardWrapper>

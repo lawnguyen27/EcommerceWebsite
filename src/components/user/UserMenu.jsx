@@ -157,6 +157,25 @@ const UserMenu = () => {
               </span>
               <span className="text-base font-semibold nav-link-text no-wrap">
                 My Account
+              </span>              
+            </Link>
+            </li>
+            <li className="nav-menu-item">
+
+            <Link
+              to="/changeProfile"
+              className={`nav-menu-link flex items-center ${
+                location.pathname === "/changeProfile" ||
+                location.pathname === "/changeProfile"
+                  ? "active"
+                  : ""
+              }`}
+            >
+              <span className="nav-link-icon flex items-center justify-center">
+                <img src="./assets/icons/ac_user.svg" alt="" />
+              </span>
+              <span className="text-base font-semibold nav-link-text no-wrap">
+                Change Profile
               </span>
             </Link>
           </li>
