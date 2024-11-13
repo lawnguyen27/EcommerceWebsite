@@ -4,11 +4,38 @@ import { Container } from "../../styles/styles";
 import { staticImages } from "../../utils/images";
 import { FormElement, Input } from "../../styles/form";
 import { BaseButtonBlack } from "../../styles/button";
-import { Link } from "react-router-dom";
+import { Link ,useNavigate} from "react-router-dom";
+import React, { useState } from "react";
+import axios from "axios"; // Add Axios for API calls
 
 const ResetScreenWrapper = styled.section``;
 
 const ResetScreen = () => {
+  const navigate = useNavigate(); // To navigate to another page on successful login
+
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      // Send a request to the backend to initiate the reset password process
+      const response = await axios.post("http://localhost:5077/api/User/ForgetPassword", { email });
+      
+      if (response.status===200) {
+        const otp = response.data;
+        localStorage.setItem("otp",otp);
+        localStorage.setItem("resetEmail",email);
+        navigate("/verification");
+        setMessage("Password reset link has been sent to your email.");
+      } else {
+        setMessage("There was an issue sending the reset link.");
+      }
+    } catch (error) {
+      setMessage("Error occurred. Please try again.");
+      console.error("Error sending password reset email:", error);
+    }
+  };
   return (
     <ResetScreenWrapper>
       <FormGridWrapper>
@@ -26,17 +53,20 @@ const ResetScreen = () => {
                 </p>
                 <p>Please check it.</p>
               </FormTitle>
+              {message && <p style={{ color: "red" }}className="message-text">{message}</p>}
 
-              <form>
+              <form onSubmit={handleSubmit}>
                 <FormElement>
                   <label htmlFor="" className="form-elem-label">
                     Email
                   </label>
                   <Input
                     type="text"
-                    placeholder=""
-                    name=""
+                    placeholder="Enter your email"
+                    name="email"
                     className="form-elem-control"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
                   />
                 </FormElement>
                 <BaseButtonBlack type="submit" className="form-submit-btn">
