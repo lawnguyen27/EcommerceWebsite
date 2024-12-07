@@ -26,6 +26,7 @@ import Account from "./screens/user/AccountScreen";
 import Address from "./screens/user/AddressScreen";
 import HomeScreenAuth from "./screens/home/HomeScreenAuth";
 import ChangeProfileScreen from "./screens/user/ChangeProfile";
+import ImageUpload from "./screens/admin/product/product";
 function App() {
   return (
     <>
@@ -60,6 +61,8 @@ function App() {
             <Route path="change_password" element={<ChangePassword />} />
             <Route path="check_mail" element={<CheckMail />} />
             <Route path="verification" element={<Verification />} />
+            <Route path="upload" element={<ImageUpload />} />
+
           </Route>
           <Route path="*" element={<NotFound />} />
         </Routes>
