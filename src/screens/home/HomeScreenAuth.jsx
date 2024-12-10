@@ -1,4 +1,6 @@
 import styled from "styled-components";
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom"; // Import useNavigate
 import Hero from "../../components/home/Hero";
 import Featured from "../../components/home/Featured";
 import NewArrival from "../../components/home/NewArrival";
@@ -11,10 +13,17 @@ import Feedback from "../../components/home/Feedback";
 const HomeScreenWrapper = styled.main``;
 
 const HomeScreenAuth = () => {
+  const navigate = useNavigate(); // Sử dụng useNavigate để chuyển hướng
   const token = localStorage.getItem("token");
   const email = localStorage.getItem("email");
 
-  console.log(token,email)
+  // Kiểm tra token và email
+  useEffect(() => {
+    if (!token || !email) {
+      navigate("/"); // Chuyển hướng về trang chủ
+    }
+  }, [token, email, navigate]); // Thực hiện kiểm tra khi token hoặc email thay đổi
+
   return (
     <HomeScreenWrapper>
       <Hero />

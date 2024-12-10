@@ -42,7 +42,7 @@ const VerificationScreen = () => {
             <div className="form-grid-right">
               <FormTitle>
                 <h3>Verification</h3>
-                <p>Verify your code.</p>
+                <p>We have send otp code to your email. Please check your email inbox to verify your code.</p>
               </FormTitle>
   {/* Display message if OTP is incorrect */}
   {message && <p style={{ color: "red" }}className="error-message">{message}</p>}

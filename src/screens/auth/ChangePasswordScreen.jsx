@@ -73,13 +73,14 @@ const ChangePasswordScreen = () => {
                    value={password}
                    onChange={(e) => setPassword(e.target.value)}
                   />
-                </FormElement><FormElement>
+                </FormElement>
+                <FormElement>
                   <label htmlFor="Password" className="form-elem-label">
                     Confirm New Password
                   </label>
                   <Input
                    type="password"
-                   placeholder="Enter OTP"
+                   placeholder="Confirm Password"
                    name="otp"
                    className="form-elem-control"
                    value={confirmpassword}

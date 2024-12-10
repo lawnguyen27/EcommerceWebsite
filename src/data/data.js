@@ -3,7 +3,7 @@ import { staticImages } from "../utils/images";
 const navMenuData = [
   {
     id: "nav-menu-1",
-    menuLink: "/",
+    menuLink: "/Home",
     menuText: "Shop",
   },
   {
@@ -31,7 +31,7 @@ const navMenuData = [
 const sideMenuData = [
   {
     id: "side-menu-1",
-    menuLink: "/",
+    menuLink: "/Home",
     menuText: "Home",
     iconName: "house",
   },
@@ -67,7 +67,7 @@ const bannerData = [
     topText: "T-shirt / Tops",
     titleText: "Summer Value Pack",
     bottomText: "cool / colorful / comfy",
-    buttonLink: "/",
+    buttonLink: "/Home",
     buttonText: "Shop Now",
     imgSource: staticImages.hero_img1,
   },
@@ -76,7 +76,7 @@ const bannerData = [
     topText: "Quality / Branded",
     titleText: "Season Of Offers",
     bottomText: "offers / heavy discount / coupons",
-    buttonLink: "/",
+    buttonLink: "/Home",
     buttonText: "Shop Now",
     imgSource: staticImages.hero_img2,
   },
