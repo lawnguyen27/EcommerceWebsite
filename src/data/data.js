@@ -1,5 +1,4 @@
 import { staticImages } from "../utils/images";
-
 const navMenuData = [
   {
     id: "nav-menu-1",
@@ -8,23 +7,23 @@ const navMenuData = [
   },
   {
     id: "nav-menu-2",
-    menuLink: "/",
+    menuLink: "/product",
     menuText: "Men",
   },
   {
     id: "nav-menu-3",
-    menuLink: "/",
+    menuLink: "/product",
     menuText: "Women",
   },
   {
     id: "nav-menu-4",
-    menuLink: "/",
-    menuText: "Combos",
+    menuLink: "/product",
+    menuText: "Kid",
   },
   {
     id: "nav-menu-5",
-    menuLink: "/",
-    menuText: "Fashion",
+    menuLink: "/product",
+    menuText: "Unisex",
   },
 ];
 
@@ -64,42 +63,42 @@ const sideMenuData = [
 const bannerData = [
   {
     id: "banner-1",
-    topText: "T-shirt / Tops",
-    titleText: "Summer Value Pack",
+    topText: "Unisex",
+    titleText: "Sneaker",
     bottomText: "cool / colorful / comfy",
     buttonLink: "/Home",
-    buttonText: "Shop Now",
-    imgSource: staticImages.hero_img1,
+    buttonText: "Mua ngay",
+    imgSource: "https://firebasestorage.googleapis.com/v0/b/exe02-oheca.appspot.com/o/images%2F9158b87d-1079-4973-9514-ee4ada0adf54_transparent_1422_800.jpg?alt=media&token=3e23e607-51ef-40f3-ba72-be3c9c7d8bda",
   },
   {
     id: "banner-2",
-    topText: "Quality / Branded",
-    titleText: "Season Of Offers",
-    bottomText: "offers / heavy discount / coupons",
+    topText: "For Men",
+    titleText: "WESTERN SHOES",
+    bottomText: "gentle/ elegant/ masculine",
     buttonLink: "/Home",
-    buttonText: "Shop Now",
-    imgSource: staticImages.hero_img2,
+    buttonText: "Mua ngay",
+    imgSource: "https://firebasestorage.googleapis.com/v0/b/exe02-oheca.appspot.com/o/images%2Fbanner-giay-dat-dong-theo-yeu-cau-tai-giayhuyhoang-600x400.jpg?alt=media&token=cfd6902f-3f30-47a7-b0b6-aaac4ef3658f",
   },
   {
     id: "banner-3",
-    topText: "Seasonal Attire / Collection",
-    titleText: "New Arrivals & Special",
-    bottomText: "stylish / trendy",
-    buttonLink: "/",
-    buttonText: "Shop Now",
-    imgSource: staticImages.hero_img3,
+    topText: "For Women",
+    titleText: "HIGH HEELS",
+    bottomText: "stylish / trendy / fashion",
+    buttonLink: "/Home",
+    buttonText: "Mua ngay",
+    imgSource: "https://firebasestorage.googleapis.com/v0/b/exe02-oheca.appspot.com/o/images%2Fz3925265336066-c4d776468ed0cd56d7e8d2d930305389.jpg?alt=media&token=887b9294-5a90-4564-8319-d773454c179e",
   },
   {
     id: "banner-4",
-    topText: "Party & Wedding Dress",
-    titleText: "Fashionable Choice for Occasion",
-    bottomText: "offers / discounts / coupons",
-    buttonLink: "/",
-    buttonText: "Shop Now",
-    imgSource: staticImages.hero_img4,
+    topText: "SANDALS",
+    titleText: "",
+    bottomText: "offers / nippy / comfo",
+    buttonLink: "/Home",
+    buttonText: "Mua ngay",
+    imgSource: "https://firebasestorage.googleapis.com/v0/b/exe02-oheca.appspot.com/o/images%2Fcare-tips-sandals-banner.jpg?alt=media&token=35b4c679-95cd-4fd6-93e0-f70cb50a8be5",
   },
 ];
-
+//bo
 const featuredData = [
   {
     id: "featured-1",
@@ -121,7 +120,8 @@ const featuredData = [
   },
 ];
 
-const newArrivalData = [
+const newArrivalData =
+[
   {
     id: "new-arrival-1",
     imgSource: staticImages.product1,

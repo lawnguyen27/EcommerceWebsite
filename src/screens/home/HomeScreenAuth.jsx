@@ -27,13 +27,15 @@ const HomeScreenAuth = () => {
   return (
     <HomeScreenWrapper>
       <Hero />
-      <Featured />
+      {/* <Featured /> */}
       <NewArrival />
-      <SavingZone />
+      {/* <SavingZone /> */}
       <Catalog catalogTitle={"Categories For Men"} products={mensCatalog} />
       <Catalog catalogTitle={"Categories For Women"} products={womensCatalog} />
-      <Brands />
-      <Catalog catalogTitle={"In The LimeLight"} products={limelightCatalog} />
+      <Catalog catalogTitle={"Categories For Kid"} products={womensCatalog} />
+
+      {/* <Brands /> */}
+      <Catalog catalogTitle={"Unisex"} products={limelightCatalog} />
       <Feedback />
     </HomeScreenWrapper>
   );

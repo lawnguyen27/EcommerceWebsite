@@ -7,6 +7,8 @@ import CustomPrevArrow from "../common/CustomPrevArrow";
 import { newArrivalData } from "../../data/data";
 import { commonCardStyles } from "../../styles/card";
 import { breakpoints } from "../../styles/themes/default";
+import axios from "axios";
+import React, { useState, useEffect } from "react";
 
 const ProductCardBoxWrapper = styled.div`
   ${commonCardStyles}
@@ -14,7 +16,12 @@ const ProductCardBoxWrapper = styled.div`
     height: 262px;
     width: 262px;
   }
-
+.product-info {
+    text-align: center; /* Căn giữa chữ trong thẻ p */
+    p {
+      margin: 0; /* Loại bỏ khoảng cách mặc định nếu cần */
+    }
+  }
   @media (max-width: ${breakpoints.sm}) {
     padding-left: 6px;
     padding-right: 6px;
@@ -56,7 +63,30 @@ const NewArrival = () => {
     centerMode: true,
     variableWidth: true,
   };
+  const [data, setData] = useState([]);
 
+  const fetchCategories = async () => {
+    try {
+      const response = await axios.get("http://localhost:5077/api/Category");
+      const categories = response.data;
+
+      const formattedData = categories.map((category, index) => ({
+        id: `new-arrival-${index + 1}`,
+        imgSource: category.imgUrl,
+        title: category.name,
+      }));
+
+      setData(formattedData); // Cập nhật state
+    } catch (error) {
+      console.error("Failed to fetch categories:", error);
+    }
+  };
+
+  // Gọi fetchCategories khi component được mount
+  useEffect(() => {
+    fetchCategories();
+  }, []);
+  
   return (
     <Section>
       <Container>
@@ -67,17 +97,17 @@ const NewArrival = () => {
             prevArrow={<CustomPrevArrow />}
             {...settings}
           >
-            {newArrivalData?.map((newArrival) => {
+            {data.map((data) => {
               return (
-                <ProductCardBoxWrapper key={newArrival.id}>
+                <ProductCardBoxWrapper key={data.id}>
                   <div className="product-img">
                     <img
                       className="object-fit-cover"
-                      src={newArrival.imgSource}
+                      src={data.imgSource}
                     />
                   </div>
                   <div className="product-info">
-                    <p className="font-semibold text-xl">{newArrival.title}</p>
+                    <p className="font-semibold text-xl">{data.title}</p>
                   </div>
                 </ProductCardBoxWrapper>
               );
