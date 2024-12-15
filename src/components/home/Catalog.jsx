@@ -3,13 +3,15 @@ import Title from "../common/Title";
 import { PropTypes } from "prop-types";
 import ProductList from "../product/ProductList";
 
-const Catalog = ({ catalogTitle, products }) => {
+
+const Catalog = ({ catalogTitle, sex}) => {
+  console.log(sex)
   return (
     <Section>
       <Container>
         <div className="categories-content">
           <Title titleText={catalogTitle} />
-          <ProductList products={products} />
+          <ProductList sex={sex} />
         </div>
       </Container>
     </Section>
