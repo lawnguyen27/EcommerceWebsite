@@ -36,7 +36,12 @@ function App() {
           {/* main screens */}
           <Route path="/" element={<BaseLayout />}>
           <Route path="/Home" element={<HomeScreenAuth />} />
-            <Route path="/product" element={<ProductList />} />
+            <Route path="/product/Male" element={<ProductList sex="male"/>} />
+            <Route path="/product/Female" element={<ProductList sex="female"/>} />
+            <Route path="/product/kid" element={<ProductList sex={"kid"}/>} />
+            <Route path="/product/unisex" element={<ProductList sex={"unisex"}/>} />
+            <Route path="/product" element={<ProductList/>} />
+
             <Route path="/product/details" element={<ProductDetails />} />
             <Route path="/cart" element={<Cart />} />
             <Route path="/empty_cart" element={<CartEmpty />} />

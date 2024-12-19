@@ -7,7 +7,8 @@ import { products } from "../../data/data";
 import Title from "../../components/common/Title";
 import { breakpoints, defaultTheme } from "../../styles/themes/default";
 import ProductFilter from "../../components/product/ProductFilter";
-
+import axios from "axios";
+import React, { useState, useEffect } from "react";
 const ProductsContent = styled.div`
   grid-template-columns: 320px auto;
   margin: 20px 0;
@@ -86,11 +87,12 @@ const DescriptionContent = styled.div`
   }
 `;
 
-const ProductListScreen = () => {
+const ProductListScreen = (sex) => {
   const breadcrumbItems = [
-    { label: "Home", link: "/Home" },
-    { label: "Products", link: "" },
+    { label: "Cửa hàng", link: "/Home" },
+    { label: "Sản phẩm", link: "" },
   ];
+console.log(sex)
   return (
     <main className="page-py-spacing">
       <Container>
@@ -101,7 +103,12 @@ const ProductListScreen = () => {
           </ProductsContentLeft>
           <ProductsContentRight>
             <div className="products-right-top flex items-center justify-between">
-              <h4 className="text-xxl">Women&apos;s Clothing</h4>
+              <h4 className="text-xxl"> {sex.sex === "male" && "Giày Nam"}
+                                        {sex.sex === "female" && "Giày Nữ"}
+                                        {sex.sex == "kid"  && "Giày trẻ em"}
+                                        {sex.sex == "unisex"  && "Giày Unisex"}
+
+              </h4>
               <ul className="products-right-nav flex items-center justify-end flex-wrap">
                 <li>
                   <Link to="/" className="active text-lg font-semibold">
@@ -115,7 +122,7 @@ const ProductListScreen = () => {
                 </li>
               </ul>
             </div>
-            <ProductList products={products.slice(0, 12)} />
+            <ProductList sex={sex.sex} />
           </ProductsContentRight>
         </ProductsContent>
       </Container>

@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { products } from "../../data/data";
+//import { products } from "../../data/data";
 import ProductItem from "./ProductItem";
 import { PropTypes } from "prop-types";
 import { breakpoints } from "../../styles/themes/default";
@@ -17,38 +17,29 @@ const ProductListWrapper = styled.div`
 `;
 
 const ProductList = (sex) => {
-  console.log(sex)
-  const [mensProducts, setMensProducts] = useState([]);
-    const fetchMensProducts = async () => {
+  const [products, setProducts] = useState([]);
+  
+    const fetchProducts = async () => {
     try {
+     
       const response = await axios.get(
         `http://localhost:5077/api/Product/sex?pageNumber=1&pageSize=5&sex=${sex.sex}` 
       );
-      const products = response.data;
-      console.log(response.data)
-      const formattedData = products.map((product) => ({
-        id: product.id,
-        imgSource: product.imageUrl,
-        title: product.name,
-        brand:product.description,
-        price:product.sex,
-      }));
-      setMensProducts(formattedData); // Gán danh sách sản phẩm vào state
-
-      console.log(mensProducts)
+      setProducts(response.data); // Gán danh sách sản phẩm vào state
+      console.log(products)
 
     } catch (error) {
       console.error("Error fetching men's products:", error);
     } 
   };
   useEffect(() => {
-    fetchMensProducts();
-    console.log(mensProducts)
+    fetchProducts();
+    console.log(products)
 
-  }, []);
+  });
   return (
     <ProductListWrapper className="grid">
-      {mensProducts?.map((product) => {
+      {products?.map((product) => {
         return <ProductItem key={product.id} product={product} />;
       })}
     </ProductListWrapper>

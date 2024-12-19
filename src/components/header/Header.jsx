@@ -124,7 +124,33 @@ const IconLinksWrapper = styled.div`
 const Header = () => {
   const location = useLocation();
   const dispatch = useDispatch();
-
+  const navMenuData = [
+    {
+      id: "nav-menu-1",
+      menuLink: "/Home",
+      menuText: "Cửa hàng",
+    },
+    {
+      id: "nav-menu-2",
+      menuLink: "/product/Male",
+      menuText: "Giày nam",
+    },
+    {
+      id: "nav-menu-3",
+      menuLink: "/product/Female",
+      menuText: "Giày nữ",
+    },
+    {
+      id: "nav-menu-4",
+      menuLink: "/product/Kid",
+      menuText: "Giày trẻ em",
+    },
+    {
+      id: "nav-menu-5",
+      menuLink: "/product/Unisex",
+      menuText: "Unisex",
+    },
+  ];
   return (
     <HeaderMainWrapper className="header flex items-center">
       <Container className="container">

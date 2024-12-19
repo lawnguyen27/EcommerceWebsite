@@ -1,4 +1,3 @@
-import { useState } from "react";
 import {
   ColorsFilter,
   FilterTitle,
@@ -10,7 +9,8 @@ import {
 } from "../../styles/filter";
 import { ProductFilterList, StyleFilterList } from "../../data/data";
 import { staticImages } from "../../utils/images";
-
+import axios from "axios";
+import React, { useState, useEffect } from "react";
 const ProductFilter = () => {
   const [isProductFilterOpen, setProductFilterOpen] = useState(true);
   const [isPriceFilterOpen, setPriceFilterOpen] = useState(true);
@@ -64,7 +64,24 @@ const ProductFilter = () => {
   const calculateRangePosition = (value, max) => {
     return (value / max) * 100 + "%";
   };
+  const [categories, setCategories] = useState([]);
+  const fetchCategories = async () => {
+  try {
+    const response = await axios.get(
+      `http://localhost:5077/api/Category` 
+    );
+    setCategories(response.data);
 
+    console.log(categories)
+
+  } catch (error) {
+    console.error("Error fetching men's products:", error);
+  } 
+};
+useEffect(() => {
+  fetchCategories();
+
+}, []);
   return (
     <>
       <ProductCategoryFilter>
@@ -73,7 +90,7 @@ const ProductFilter = () => {
           onClick={() => toggleFilter("product")}
         >
           <p className="filter-title-text text-gray text-base font-semibold text-lg">
-            Filter
+            Thể loại
           </p>
           <span
             className={`text-gray text-xxl filter-title-icon ${
@@ -84,15 +101,15 @@ const ProductFilter = () => {
           </span>
         </FilterTitle>
         <FilterWrap className={`${!isProductFilterOpen ? "hide" : "show"}`}>
-          {ProductFilterList?.map((productFilter) => {
+          {categories?.map((category) => {
             return (
-              <div className="product-filter-item" key={productFilter.id}>
+              <div className="product-filter-item" key={category.id}>
                 <button
                   type="button"
                   className="filter-item-head w-full flex items-center justify-between"
                 >
                   <span className="filter-head-title text-base text-gray font-semibold">
-                    {productFilter.title}
+                    {category.name}
                   </span>
                   <span className="filter-head-icon text-gray">
                     <i className="bi bi-chevron-right"></i>
@@ -175,7 +192,7 @@ const ProductFilter = () => {
         </FilterWrap>
       </PriceFilter>
 
-      <ColorsFilter>
+      {/* <ColorsFilter>
         <FilterTitle
           className="flex items-center justify-between"
           onClick={() => toggleFilter("color")}
@@ -243,7 +260,7 @@ const ProductFilter = () => {
             </div>
           </div>
         </FilterWrap>
-      </ColorsFilter>
+      </ColorsFilter> */}
       <SizesFilter>
         <FilterTitle
           className="flex items-center justify-between"
@@ -265,34 +282,34 @@ const ProductFilter = () => {
             <div className="sizes-item text-sm font-semibold text-outerspace w-full">
               <input type="checkbox" />
               <span className="flex items-center justify-center uppercase">
-                xxs
+                S
               </span>
             </div>
             <div className="sizes-item text-sm font-semibold text-outerspace w-full">
               <input type="checkbox" />
               <span className="flex items-center justify-center uppercase">
-                xs
+              M
               </span>
             </div>
             <div className="sizes-item text-sm font-semibold text-outerspace w-full">
               <input type="checkbox" />
               <span className="flex items-center justify-center uppercase">
-                s
+                L
               </span>
             </div>
             <div className="sizes-item text-sm font-semibold text-outerspace w-full">
               <input type="checkbox" />
               <span className="flex items-center justify-center uppercase">
-                m
+                XL
               </span>
             </div>
             <div className="sizes-item text-sm font-semibold text-outerspace w-full">
               <input type="checkbox" />
               <span className="flex items-center justify-center uppercase">
-                l
+                XXL
               </span>
             </div>
-            <div className="sizes-item text-sm font-semibold text-outerspace w-full">
+            {/* <div className="sizes-item text-sm font-semibold text-outerspace w-full">
               <input type="checkbox" />
               <span className="flex items-center justify-center uppercase">
                 xxl
@@ -309,11 +326,11 @@ const ProductFilter = () => {
               <span className="flex items-center justify-center uppercase">
                 4xl
               </span>
-            </div>
+            </div> */}
           </div>
         </FilterWrap>
       </SizesFilter>
-      <StyleFilter onClick={() => toggleFilter("style")}>
+      {/* <StyleFilter onClick={() => toggleFilter("style")}>
         <FilterTitle className="flex items-center justify-between">
           <p className="filter-title-text text-gray text-base font-semibold text-lg">
             Dress Style
@@ -345,7 +362,7 @@ const ProductFilter = () => {
             );
           })}
         </FilterWrap>
-      </StyleFilter>
+      </StyleFilter> */}
     </>
   );
 };
