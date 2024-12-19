@@ -101,8 +101,8 @@ const UserMenu = () => {
   
   return (
     <div>
-      <Title titleText={"Hello "+account.name} />
-      <p className="text-base font-light italic">Welcome to your account.</p>
+      <Title titleText={"Xin chào "+account.name} />
+      <p className="text-base font-light italic">Chào mừng bạn với phần thông tin tài khoản.</p>
 
       <NavMenuWrapper>
         <ul className="nav-menu-list grid">
@@ -120,7 +120,7 @@ const UserMenu = () => {
                 <img src="./assets/icons/ac_orders.svg" alt="" />
               </span>
               <span className="text-base font-semibold nav-link-text no-wrap">
-                My orders
+                Đơn hàng của tôi
               </span>
             </Link>
           </li>
@@ -138,7 +138,7 @@ const UserMenu = () => {
                 <img src="./assets/icons/ac_heart.svg" alt="" />
               </span>
               <span className="text-base font-semibold nav-link-text no-wrap">
-                Wishlist
+                Yêu thích
               </span>
             </Link>
           </li>
@@ -156,7 +156,7 @@ const UserMenu = () => {
                 <img src="./assets/icons/ac_user.svg" alt="" />
               </span>
               <span className="text-base font-semibold nav-link-text no-wrap">
-                My Account
+                Tài khoản của tôi
               </span>              
             </Link>
             </li>
@@ -175,7 +175,7 @@ const UserMenu = () => {
                 <img src="./assets/icons/ac_user.svg" alt="" />
               </span>
               <span className="text-base font-semibold nav-link-text no-wrap">
-                Change Profile
+                Chỉnh sửa thông tin
               </span>
             </Link>
           </li>
@@ -185,7 +185,7 @@ const UserMenu = () => {
                 <img src="./assets/icons/ac_sign_out.svg" alt="" />
               </span>
               <span className="text-base font-semibold nav-link-text no-wrap">
-                Sign out
+                Đăng xuất
               </span>
             </Link>
           </li>

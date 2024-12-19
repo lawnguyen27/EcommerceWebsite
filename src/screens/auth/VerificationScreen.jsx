@@ -41,19 +41,19 @@ const VerificationScreen = () => {
             </div>
             <div className="form-grid-right">
               <FormTitle>
-                <h3>Verification</h3>
-                <p>We have send otp code to your email. Please check your email inbox to verify your code.</p>
+                <h3>Xác minh mã OTP</h3>
+                <p>Chúng tôi đã gửi OTP về email của bạn. Vui lòng kiểm tra hộp thư.</p>
               </FormTitle>
   {/* Display message if OTP is incorrect */}
   {message && <p style={{ color: "red" }}className="error-message">{message}</p>}
               <form onSubmit={handleSubmit}>
                 <FormElement>
                   <label htmlFor="otp" className="form-elem-label">
-                    Verification Code
+                    Mã xác minh gồm 6 chữ số
                   </label>
                   <Input
                    type="text"
-                   placeholder="Enter OTP"
+                   placeholder="Nhập mã xác minh"
                    name="otp"
                    className="form-elem-control"
                    value={enteredOtp}
@@ -61,7 +61,7 @@ const VerificationScreen = () => {
                   />
                 </FormElement>
                 <BaseButtonGreen type="submit" className="form-submit-btn">
-                  Verify Code
+                  Gửi
                 </BaseButtonGreen>
               </form>
             </div>

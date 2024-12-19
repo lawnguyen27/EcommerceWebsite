@@ -63,11 +63,11 @@ const SignInScreen = () => {
           // Login success, redirect to another page (e.g., dashboard)
           navigate("/Home"); // Replace "/dashboard" with the actual route
         } else {
-          setError("Invalid login credentials");
+          setError("Không hợp lệ");
         }
       } catch (error) {
         // Handle error case
-        setError("Login failed. Please check your credentials and try again.");
+        setError("Đăng nhập thất bại. Vui lòng kiểm tra email và mặt khẩu");
         console.error("Login error:", error);
       }
     };
@@ -81,13 +81,13 @@ const SignInScreen = () => {
             </div>
             <div className="form-grid-right">
               <FormTitle>
-                <h3>Sign In</h3>
+                <h3>Đăng nhập</h3>
               </FormTitle>
               <AuthOptions />
               <div className="form-separator flex items-center justify-center">
                 <span className="separator-line"></span>
                 <span className="separator-text inline-flex items-center justify-center text-white">
-                  OR
+                  Hoặc
                 </span>
                 <span className="separator-line"></span>
               </div>
@@ -95,11 +95,11 @@ const SignInScreen = () => {
               <form onSubmit={handleLogin}>
                 <FormElement>
                   <label htmlFor="email" className="form-elem-label">
-                    User name or email address
+                   Email
                   </label>
                   <Input
                        type="email"
-                       placeholder="Enter your email"
+                       placeholder="Nhập email"
                        name="email"
                        value={email}
                        onChange={(e) => setEmail(e.target.value)} // Update email state
@@ -109,11 +109,11 @@ const SignInScreen = () => {
                 </FormElement>
                 <FormElement>
                   <label htmlFor="password" className="form-elem-label">
-                    Password
+                    Mật khẩu
                   </label>
                   <Input
                        type="password"
-                       placeholder="Enter your password"
+                       placeholder="Nhập mật khẩu"
                        name="password"
                        value={password}
                        onChange={(e) => setPassword(e.target.value)} // Update pass state
@@ -126,17 +126,17 @@ const SignInScreen = () => {
                   to="/reset"
                   className="form-elem-text text-end font-medium"
                 >
-                  Forgot your password?
+                  Quên mật khẩu
                 </Link>
                 {error && <p style={{ color: "red" }}>{error}</p>} {/* Show error if exists */}
                 <BaseButtonBlack type="submit" className="form-submit-btn">
-                  Sign In
+                  Đăng nhập
                 </BaseButtonBlack>
               </form>
               <p className="flex flex-wrap account-rel-text">
-                Don&apos;t have a account?
+                Không có tài khoản
                 <Link to="/sign_up" className="font-medium">
-                  Sign Up
+                  Đăng ký
                 </Link>
                 `
               </p>

@@ -32,7 +32,7 @@ const ResetScreen = () => {
         setMessage("There was an issue sending the reset link.");
       }
     } catch (error) {
-      setMessage("Error occurred. Please try again.");
+      setMessage("Có lỗi xảy ra. Vui lòng nhập lại");
       console.error("Error sending password reset email:", error);
     }
   };
@@ -46,12 +46,12 @@ const ResetScreen = () => {
             </div>
             <div className="form-grid-right">
               <FormTitle>
-                <h3>Reset Your Password</h3>
+                <h3>Đặt lại mật khẩu</h3>
                 <p>
-                  Enter your email and we &apos;ll send you a link to reset your
-                  password.
+                  Nhập email đăng ký. 
+                  Chúng tôi sẽ gửi mã OTP về email của bạn.
                 </p>
-                <p>Please check it.</p>
+                <p>Vui lòng kiểm tra.</p>
               </FormTitle>
               {message && <p style={{ color: "red" }}className="message-text">{message}</p>}
 
@@ -62,7 +62,7 @@ const ResetScreen = () => {
                   </label>
                   <Input
                     type="text"
-                    placeholder="Enter your email"
+                    placeholder="Nhập email"
                     name="email"
                     className="form-elem-control"
                     value={email}
@@ -70,12 +70,12 @@ const ResetScreen = () => {
                   />
                 </FormElement>
                 <BaseButtonBlack type="submit" className="form-submit-btn">
-                  Send
+                  Gửi
                 </BaseButtonBlack>
               </form>
               <p className="flex flex-wrap account-rel-text">
                 <Link to="/sign_in" className="font-medium">
-                  Back to Login
+                  Trở về đăng nhập
                 </Link>
               </p>
             </div>

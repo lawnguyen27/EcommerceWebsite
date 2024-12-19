@@ -54,20 +54,19 @@ const ChangePasswordScreen = () => {
             </div>
             <div className="form-grid-right">
               <FormTitle>
-                <h3>Create New Password</h3>
+                <h3>Tạo mật khẩu mới</h3>
                 <p>
-                  Your new password mst be different from previous used
-                  passwords.
+                  
                 </p>
               </FormTitle>
               <form onSubmit={handleSubmit}>
                 <FormElement>
                   <label htmlFor="Password" className="form-elem-label">
-                    Password
+                    Mật khẩu
                   </label>
                   <Input
                    type="password"
-                   placeholder="Enter Password"
+                   placeholder="Nhập mật khẩu"
                    name="otp"
                    className="form-elem-control"
                    value={password}
@@ -76,11 +75,11 @@ const ChangePasswordScreen = () => {
                 </FormElement>
                 <FormElement>
                   <label htmlFor="Password" className="form-elem-label">
-                    Confirm New Password
+                    Xác nhận mật khẩu
                   </label>
                   <Input
                    type="password"
-                   placeholder="Confirm Password"
+                   placeholder="Xác nhận mật khẩu"
                    name="otp"
                    className="form-elem-control"
                    value={confirmpassword}
@@ -88,7 +87,7 @@ const ChangePasswordScreen = () => {
                   />
                 </FormElement>
                 <BaseButtonBlack type="submit" className="form-submit-btn">
-                  Verify Code
+                  Xác nhận
                 </BaseButtonBlack>
               </form>
                 {/* Display message if OTP is incorrect */}

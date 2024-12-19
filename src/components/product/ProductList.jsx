@@ -22,7 +22,7 @@ const ProductList = (sex) => {
     const fetchMensProducts = async () => {
     try {
       const response = await axios.get(
-        `http://localhost:5077/api/Product/sex?pageNumber=1&pageSize=5&sex=${sex.sex}` // Sử dụng template literals
+        `http://localhost:5077/api/Product/sex?pageNumber=1&pageSize=5&sex=${sex.sex}` 
       );
       const products = response.data;
       console.log(response.data)

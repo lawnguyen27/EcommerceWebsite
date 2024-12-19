@@ -54,10 +54,10 @@ const AccountScreenWrapper = styled.main`
 
 const breadcrumbItems = [
   {
-    label: "Home",
+    label: "Cửa hàng",
     link: "/Home",
   },
-  { label: "Account", link: "/account" },
+  { label: "Tài khoản", link: "/account" },
 ];
 
 const AccountScreen = () => {
@@ -101,7 +101,7 @@ const AccountScreen = () => {
           <UserMenu />
           <UserContent>
             <Title titleText={"My Account"} />
-            <h4 className="title-sm">Contact Details</h4>
+            <h4 className="title-sm">Thông tin tài khoản</h4>
             <form>
               <div className="form-wrapper">
                 <FormElement className="form-elem">
@@ -109,7 +109,7 @@ const AccountScreen = () => {
                     htmlFor=""
                     className="form-label font-semibold text-base"
                   >
-                    Your Name
+                    Họ tên
                   </label>
                   <div className="form-input-wrapper flex items-center">
                     <Input
@@ -128,7 +128,7 @@ const AccountScreen = () => {
                     htmlFor=""
                     className="form-label font-semibold text-base"
                   >
-                    Email Address
+                    Địa chỉ email
                   </label>
                   <div className="form-input-wrapper flex items-center">
                     <Input
@@ -147,7 +147,7 @@ const AccountScreen = () => {
                     htmlFor=""
                     className="form-label font-semibold text-base"
                   >
-                    Phone Number
+                    Số điện thoại
                   </label>
                   <div className="form-input-wrapper flex items-center">
                     <Input
@@ -166,7 +166,7 @@ const AccountScreen = () => {
                     htmlFor=""
                     className="form-label font-semibold text-base"
                   >
-                    Password
+                    Mật khẩu
                   </label>
                   <div className="form-input-wrapper flex items-center">
                     <Input
@@ -183,7 +183,7 @@ const AccountScreen = () => {
               </div>
             </form>
             <div>
-              <h4 className="title-sm">My Contact Addresss</h4>
+              <h4 className="title-sm">Địa chỉ</h4>
               <div className="address-list grid">
                 <div className="address-item grid">
                   <p className="text-outerspace text-lg font-semibold address-title">
@@ -194,15 +194,15 @@ const AccountScreen = () => {
                   </p>
                   <ul className="address-tags flex flex-wrap">
                     <li className="text-gray text-base font-medium inline-flex items-center justify-center">
-                      Home
+                      Nhà
                     </li>
                     <li className="text-gray text-base font-medium inline-flex items-center justify-center">
-                      Default billing address
+                      Địa chỉ mặc định
                     </li>
                   </ul>
                 </div>
               </div>
-              <BaseLinkGreen to="/changeProfile">Edit Profile</BaseLinkGreen>
+              <BaseLinkGreen to="/changeProfile">Chỉnh sửa thông tin</BaseLinkGreen>
             </div>
           </UserContent>
         </UserDashboardWrapper>

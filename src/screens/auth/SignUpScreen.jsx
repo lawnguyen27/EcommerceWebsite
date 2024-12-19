@@ -80,9 +80,9 @@ const SignUpScreen = () => {
             </div>
             <div className="form-grid-right">
               <FormTitle>
-                <h3>Sign Up</h3>
+                <h3>Đăng ký</h3>
                 <p className="text-base">
-                  Sign up for free to access to in any of our products
+                  
                 </p>
               </FormTitle>
               <AuthOptions />
@@ -91,11 +91,11 @@ const SignUpScreen = () => {
               <form onSubmit={handleSignUp}>
                 <FormElement>
                   <label htmlFor="name" className="forme-elem-label">
-                    Fullname
+                    Họ tên
                   </label>
                   <Input
                     type="text"
-                    placeholder="Enter your name"
+                    placeholder="Nhập họ tên"
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                     className="form-elem-control"
@@ -104,11 +104,11 @@ const SignUpScreen = () => {
                 </FormElement>
                 <FormElement>
                   <label htmlFor="email" className="form-elem-label">
-                    Email Address
+                    Email
                   </label>
                   <Input
                     type="email"
-                    placeholder="Enter your email"
+                    placeholder="Nhập địa chỉ email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     className="form-elem-control"
@@ -116,11 +116,11 @@ const SignUpScreen = () => {
                 </FormElement>
                 <FormElement>
                   <label htmlFor="Password" className="form-elem-label">
-                    Password
+                    Mật khẩu
                   </label>
                   <Input
                     type="password"
-                    placeholder="Enter your password"
+                    placeholder="Nhập mật khẩu"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                     className="form-elem-control"
@@ -128,11 +128,12 @@ const SignUpScreen = () => {
                 </FormElement>
                 <FormElement>
                   <label htmlFor="confirmPassword" className="form-elem-label">
-                    Confirm Password
+                    Xác nhận mật khẩu
                   </label>
                   <Input
                     type="password"
-                    placeholder="Confirm your password"
+                    placeholder="Xác nhận mật khẩu
+"
                     value={confirmPassword}
                     onChange={(e) => setConfirmPassword(e.target.value)}
                     className="form-elem-control"
@@ -140,11 +141,11 @@ const SignUpScreen = () => {
                 </FormElement>
                 <FormElement>
                   <label htmlFor="address" className="form-elem-label">
-                    Address
+                    Địa chỉ
                   </label>
                   <Input
                     type="text"
-                    placeholder="Enter your address"
+                    placeholder="Nhập địa chỉ"
                     value={address}
                     onChange={(e) => setAddress(e.target.value)}
                     className="form-elem-control"
@@ -153,11 +154,11 @@ const SignUpScreen = () => {
 
                 <FormElement>
                   <label htmlFor="phone" className="form-elem-label">
-                    Phone Number
+                    Số điện thoại
                   </label>
                   <Input
                     type="text"
-                    placeholder="Enter your phone number"
+                    placeholder="Nhập số điện thoại"
                     value={phone}
                     onChange={(e) => setPhone(e.target.value)}
                     className="form-elem-control"
@@ -176,31 +177,33 @@ const SignUpScreen = () => {
                   <li className="flex items-center">
                     <input type="checkbox" />
                     <span className="text-sm">
-                      Agree to our
+                      Đồng ý với
+                      <span className="text-space"></span>
+
                       <Link to="/" className="text-underline">
-                        Terms of use
+                       Điều khoản sử dụng
                       </Link>
-                      <span className="text-space">and</span>
+                      <span className="text-space">và</span>
                       <Link to="/" className="text-underline">
-                        Privacy Policy
+                      Chính sách bảo mật                      
                       </Link>
                     </span>
                   </li>
-                  <li className="flex items-center">
+                  {/* <li className="flex items-center">
                     <input type="checkbox" />
                     <span className="text-sm">
                       Subscribe to our monthly newsletter
                     </span>
-                  </li>
+                  </li> */}
                 </CheckboxGroup>
                 <BaseButtonBlack type="submit" className="form-submit-btn">
-                  Sign Up
-                </BaseButtonBlack>
+                  Đăng ký                
+      </BaseButtonBlack>
               </form>
               <p className="flex flex-wrap account-rel-text">
-                Already have an account?
+                Đã có tài khoản
                 <Link to="/sign_in" className="font-medium">
-                  Log in
+                  Đăng nhập
                 </Link>
               </p>
             </div>

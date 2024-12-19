@@ -88,7 +88,7 @@ const DescriptionContent = styled.div`
 
 const ProductListScreen = () => {
   const breadcrumbItems = [
-    { label: "Home", link: "/" },
+    { label: "Home", link: "/Home" },
     { label: "Products", link: "" },
   ];
   return (
