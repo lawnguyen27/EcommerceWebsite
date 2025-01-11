@@ -23,7 +23,7 @@ const ProductList = (sex) => {
     try {
      
       const response = await axios.get(
-        `http://localhost:5077/api/Product/sex?pageNumber=1&pageSize=5&sex=${sex.sex}` 
+        `http://localhost:5077/api/Product/CategoryType?pageNumber=1&pageSize=5&categoryType=${sex.sex}` 
       );
       setProducts(response.data); // Gán danh sách sản phẩm vào state
       console.log(products)
@@ -36,7 +36,7 @@ const ProductList = (sex) => {
     fetchProducts();
     console.log(products)
 
-  });
+  },[sex]);
   return (
     <ProductListWrapper className="grid">
       {products?.map((product) => {

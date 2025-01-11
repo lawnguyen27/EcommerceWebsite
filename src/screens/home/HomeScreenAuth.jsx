@@ -30,12 +30,12 @@ const HomeScreenAuth = () => {
       {/* <Featured /> */}
       <NewArrival />
       {/* <SavingZone /> */}
-      <Catalog catalogTitle={"Categories For Men"} sex="Male" />
-      <Catalog catalogTitle={"Categories For Women"} sex="Female"/>
-      <Catalog catalogTitle={"Categories For Kid"} sex="Kid" />
+      <Catalog catalogTitle={"Sản phẩm cho nam"} sex="Male" />
+      <Catalog catalogTitle={"Sản phẩm cho nữ"} sex="Female"/>
+      <Catalog catalogTitle={"Sản phẩm cho trẻ em"} sex="Kid" />
 
       {/* <Brands /> */}
-      <Catalog catalogTitle={"Unisex"} sex="Unisex" />
+      <Catalog catalogTitle={"Sản phẩm cho cả nam và nữ"} sex="Unisex" />
       <Feedback />
     </HomeScreenWrapper>
   );

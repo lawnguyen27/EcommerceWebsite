@@ -90,7 +90,7 @@ const NewArrival = () => {
   return (
     <Section>
       <Container>
-        <Title titleText={"New Arrival"} />
+        <Title titleText={"Danh mục sản phẩm"} />
         <ArrivalSliderWrapper>
           <Slider
             nextArrow={<CustomNextArrow />}
