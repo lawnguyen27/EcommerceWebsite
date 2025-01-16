@@ -206,7 +206,9 @@ console.log(product)
     { label: "Women", link: "" },
     { label: "Top", link: "" },
   ];
-
+  const formatPrice = (price) => {
+    return new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(price);
+  };
   return (
     <DetailsScreenWrapper>
       <Container>
@@ -233,10 +235,10 @@ console.log(product)
             <ProductSizeWrapper>
               <div className="prod-size-top flex items-center flex-wrap">
                 <p className="text-lg font-semibold text-outerspace">
-                  Select size
+                  Chọn Size Giày
                 </p>
                 <Link to="/" className="text-lg text-gray font-medium">
-                  Size Guide &nbsp; <i className="bi bi-arrow-right"></i>
+                  Bảng kích cỡ &nbsp; <i className="bi bi-arrow-right"></i>
                 </Link>
               </div>
               <div className="prod-size-list flex items-center">
@@ -250,7 +252,7 @@ console.log(product)
                 ))}
               </div>
             </ProductSizeWrapper>
-            <ProductColorWrapper>
+            {/* <ProductColorWrapper>
               <div className="prod-colors-top flex items-center flex-wrap">
                 <p className="text-lg font-semibold text-outerspace">
                   Colours Available
@@ -267,7 +269,7 @@ console.log(product)
                   </div>
                 ))}
               </div>
-            </ProductColorWrapper>
+            </ProductColorWrapper> */}
             <div className="btn-and-price flex items-center flex-wrap">
               <BaseLinkGreen
                 to="/cart"
@@ -277,11 +279,10 @@ console.log(product)
                 <span className="prod-add-btn-icon">
                   <i className="bi bi-cart2"></i>
                 </span>
-                <span className="prod-add-btn-text">Add to cart</span>
+                <span className="prod-add-btn-text">Thêm vào giỏ hàng</span>
               </BaseLinkGreen>
               <span className="prod-price text-xl font-bold text-outerspace">
-                {currencyFormat(product_one.price)}
-              </span>
+              {formatPrice(product.price)}              </span>
             </div>
             <ProductServices />
           </ProductDetailsWrapper>

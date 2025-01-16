@@ -597,22 +597,22 @@ const servicesData = [
   {
     id: "service_1",
     icon: staticImages.card_icon,
-    text: "Secure Payment",
+    text: "Thanh toán dễ dàng",
   },
   {
     id: "service_2",
     icon: staticImages.size_icon,
-    text: "Size & fit",
+    text: "Vừa vặn thoải mải",
   },
   {
     id: "service_3",
     icon: staticImages.shipping_icon,
-    text: "Free Shipping",
+    text: "Vận chuyển nhanh chóng",
   },
   {
     id: "service_4",
     icon: staticImages.return_icon,
-    text: "Free Shipping & Returns",
+    text: "Chính sách trả hàng",
   },
 ];
 

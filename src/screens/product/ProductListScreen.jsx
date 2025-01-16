@@ -92,11 +92,18 @@ const ProductListScreen = () => {
   const [categoryName, setCategoryName] = useState(null);
   const [categoryId, setCategoryId] = useState(null);
   const location = useLocation();
+  const category = location.state?.category;
   const sex = location.state?.sex || "male"; // Default to "male" if not provided
 console.log(sex)
   useEffect(() => {
-    setCategoryId(null); // Reset categoryId when sex changes
-    setCategoryName(null);
+    if (category) {
+      setCategoryId(category.categoryId);
+      setCategoryName(category.name);
+    } else {
+      setCategoryId(null); // Reset categoryId when sex changes
+      setCategoryName(null);
+    }
+    window.scrollTo(0, 0);
   }, [sex]);
   const handleCategoryChange = (newCategory) => {
     setCategoryName(newCategory.name);

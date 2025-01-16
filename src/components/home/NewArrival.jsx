@@ -1,14 +1,14 @@
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
+import Slider from "react-slick";
 import { Container, Section } from "../../styles/styles";
 import Title from "../common/Title";
-import Slider from "react-slick";
+import { breakpoints } from "../../styles/themes/default";
 import CustomNextArrow from "../common/CustomNextArrow";
 import CustomPrevArrow from "../common/CustomPrevArrow";
-import { newArrivalData } from "../../data/data";
 import { commonCardStyles } from "../../styles/card";
-import { breakpoints } from "../../styles/themes/default";
 import axios from "axios";
-import React, { useState, useEffect } from "react";
 
 const ProductCardBoxWrapper = styled.div`
   ${commonCardStyles}
@@ -55,6 +55,7 @@ const ArrivalSliderWrapper = styled.div`
 `;
 
 const NewArrival = () => {
+  const navigate = useNavigate();
   const settings = {
     dots: false,
     infinite: true,
@@ -76,10 +77,14 @@ const NewArrival = () => {
         title: category.name,
       }));
 
-      setData(formattedData); // Cập nhật state
+      setData(categories); // Cập nhật state
     } catch (error) {
       console.error("Failed to fetch categories:", error);
     }
+  };
+
+  const handleCategoryClick = (category) => {
+    navigate("/product", { state: { category } });
   };
 
   // Gọi fetchCategories khi component được mount
@@ -97,17 +102,21 @@ const NewArrival = () => {
             prevArrow={<CustomPrevArrow />}
             {...settings}
           >
-            {data.map((data) => {
+            {data.map((category) => {
               return (
-                <ProductCardBoxWrapper key={data.id}>
+                <ProductCardBoxWrapper
+                  key={category.id}
+                  onClick={() => handleCategoryClick(category)}
+                >
                   <div className="product-img">
                     <img
                       className="object-fit-cover"
-                      src={data.imgSource}
+                      src={category.imgUrl}
+                      alt={category.name}
                     />
                   </div>
                   <div className="product-info">
-                    <p className="font-semibold text-xl">{data.title}</p>
+                    <p className="font-semibold text-xl">{category.name}</p>
                   </div>
                 </ProductCardBoxWrapper>
               );
