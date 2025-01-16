@@ -1,10 +1,10 @@
 import styled from "styled-components";
-//import { products } from "../../data/data";
 import ProductItem from "./ProductItem";
 import { PropTypes } from "prop-types";
 import { breakpoints } from "../../styles/themes/default";
 import axios from "axios";
 import React, { useState, useEffect } from "react";
+
 const ProductListWrapper = styled.div`
   column-gap: 20px;
   row-gap: 40px;
@@ -16,38 +16,38 @@ const ProductListWrapper = styled.div`
   }
 `;
 
-const ProductList = (sex) => {
+const ProductListByCategory = ({ cateId }) => {
   const [products, setProducts] = useState([]);
-  console.log(sex)
-    const fetchProducts = async () => {
-    try {
-     
-      const response = await axios.get(
-        `http://localhost:5077/api/Product/CategoryType?pageNumber=1&pageSize=5&categoryType=${sex.sex}` 
-      );
-      setProducts(response.data); // Gán danh sách sản phẩm vào state
-      console.log(products)
 
+  const fetchProducts = async () => {
+    try {
+      console.log(cateId)
+      const response = await axios.get(
+        `http://localhost:5077/api/Product/category?pageNumber=1&pageSize=5&cateid=${cateId}`
+      );
+      setProducts(response.data);
+      console.log(products);
     } catch (error) {
-      console.error("Error fetching men's products:", error);
-    } 
+      console.error("Error fetching products:", error);
+    }
   };
+
   useEffect(() => {
     fetchProducts();
-    console.log(products)
+    console.log(products);
+  }, [cateId]);
 
-  },[sex]);
   return (
     <ProductListWrapper className="grid">
-      {products?.map((product) => {
-        return <ProductItem key={product.id} product={product} />;
-      })}
+      {products?.map((product) => (
+        <ProductItem key={product.id} product={product} />
+      ))}
     </ProductListWrapper>
   );
 };
 
-export default ProductList;
+export default ProductListByCategory;
 
-ProductList.propTypes = {
-  products: PropTypes.array,
+ProductListByCategory.propTypes = {
+  cateId: PropTypes.number.isRequired,
 };

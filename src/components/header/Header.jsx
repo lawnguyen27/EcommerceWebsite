@@ -2,8 +2,7 @@ import styled from "styled-components";
 import { HeaderMainWrapper, SiteBrandWrapper } from "../../styles/header";
 import { Container } from "../../styles/styles";
 import { staticImages } from "../../utils/images";
-import { navMenuData } from "../../data/data";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Input, InputGroupWrapper } from "../../styles/form";
 import { breakpoints, defaultTheme } from "../../styles/themes/default";
 import { useDispatch } from "react-redux";
@@ -86,7 +85,6 @@ const NavigationMenuWrapper = styled.nav`
     z-index: 999;
     display: none;
   }
-   
 `;
 
 const IconLinksWrapper = styled.div`
@@ -115,42 +113,50 @@ const IconLinksWrapper = styled.div`
   @media (max-width: ${breakpoints.xl}) {
     column-gap: 6px;
   }
-     .image{
-   width: 14px;
+  .image {
+    width: 14px;
     height: 14px;
-    }
+  }
 `;
 
 const Header = () => {
   const location = useLocation();
+  const navigate = useNavigate();
   const dispatch = useDispatch();
+
+  const handleNavigation = (sex) => {
+    navigate("/product", { state: { sex } });
+    window.location.reload(); 
+  };
+
   const navMenuData = [
     {
       id: "nav-menu-1",
-      menuLink: "/Home",
       menuText: "Cửa hàng",
+      onClick: () => navigate("/Home"),
     },
     {
       id: "nav-menu-2",
-      menuLink: "/product/Male",
       menuText: "Giày nam",
+      onClick: () => handleNavigation("male"),
     },
     {
       id: "nav-menu-3",
-      menuLink: "/product/Female",
       menuText: "Giày nữ",
+      onClick: () => handleNavigation("female"),
     },
     {
       id: "nav-menu-4",
-      menuLink: "/product/Kid",
       menuText: "Giày trẻ em",
+      onClick: () => handleNavigation("kid"),
     },
     {
       id: "nav-menu-5",
-      menuLink: "/product/Unisex",
       menuText: "Unisex",
+      onClick: () => handleNavigation("unisex"),
     },
   ];
+
   return (
     <HeaderMainWrapper className="header flex items-center">
       <Container className="container">
@@ -180,12 +186,12 @@ const Header = () => {
                 {navMenuData?.map((menu) => {
                   return (
                     <li className="nav-menu-item" key={menu.id}>
-                      <Link
-                        to={menu.menuLink}
+                      <button
+                        onClick={menu.onClick}
                         className="nav-menu-link text-base font-medium text-gray"
                       >
                         {menu.menuText}
-                      </Link>
+                      </button>
                     </li>
                   );
                 })}
@@ -239,7 +245,7 @@ const Header = () => {
                 location.pathname === "/logout" ? "active" : ""
               } inline-flex items-center justify-center`}
             >
-              <img className="image" src={staticImages.logout}  alt="" />
+              <img className="image" src={staticImages.logout} alt="" />
             </Link>
           </IconLinksWrapper>
         </div>

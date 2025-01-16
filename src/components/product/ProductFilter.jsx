@@ -11,7 +11,9 @@ import { ProductFilterList, StyleFilterList } from "../../data/data";
 import { staticImages } from "../../utils/images";
 import axios from "axios";
 import React, { useState, useEffect } from "react";
-const ProductFilter = () => {
+import PropTypes from "prop-types";
+
+const ProductFilter = ({ onCategoryChange }) => {
   const [isProductFilterOpen, setProductFilterOpen] = useState(true);
   const [isPriceFilterOpen, setPriceFilterOpen] = useState(true);
   const [isColorFilterOpen, setColorFilterOpen] = useState(true);
@@ -82,6 +84,11 @@ useEffect(() => {
   fetchCategories();
 
 }, []);
+
+  const handleCategoryClick = (category) => {
+    onCategoryChange(category);
+  };
+
   return (
     <>
       <ProductCategoryFilter>
@@ -103,10 +110,11 @@ useEffect(() => {
         <FilterWrap className={`${!isProductFilterOpen ? "hide" : "show"}`}>
           {categories?.map((category) => {
             return (
-              <div className="product-filter-item" key={category.id}>
+              <div className="product-filter-item" key={category.categoryId}>
                 <button
                   type="button"
                   className="filter-item-head w-full flex items-center justify-between"
+                  onClick={() => handleCategoryClick(category)}
                 >
                   <span className="filter-head-title text-base text-gray font-semibold">
                     {category.name}
@@ -121,7 +129,7 @@ useEffect(() => {
         </FilterWrap>
       </ProductCategoryFilter>
 
-      <PriceFilter>
+      {/* <PriceFilter>
         <FilterTitle
           className="filter-title flex items-center justify-between"
           onClick={() => toggleFilter("price")}
@@ -190,7 +198,7 @@ useEffect(() => {
             />
           </div>
         </FilterWrap>
-      </PriceFilter>
+      </PriceFilter> */}
 
       {/* <ColorsFilter>
         <FilterTitle
@@ -261,7 +269,7 @@ useEffect(() => {
           </div>
         </FilterWrap>
       </ColorsFilter> */}
-      <SizesFilter>
+      {/* <SizesFilter>
         <FilterTitle
           className="flex items-center justify-between"
           onClick={() => toggleFilter("size")}
@@ -309,7 +317,7 @@ useEffect(() => {
                 XXL
               </span>
             </div>
-            {/* <div className="sizes-item text-sm font-semibold text-outerspace w-full">
+            <div className="sizes-item text-sm font-semibold text-outerspace w-full">
               <input type="checkbox" />
               <span className="flex items-center justify-center uppercase">
                 xxl
@@ -326,10 +334,10 @@ useEffect(() => {
               <span className="flex items-center justify-center uppercase">
                 4xl
               </span>
-            </div> */}
+            </div>
           </div>
         </FilterWrap>
-      </SizesFilter>
+      </SizesFilter> */}
       {/* <StyleFilter onClick={() => toggleFilter("style")}>
         <FilterTitle className="flex items-center justify-between">
           <p className="filter-title-text text-gray text-base font-semibold text-lg">
@@ -365,6 +373,10 @@ useEffect(() => {
       </StyleFilter> */}
     </>
   );
+};
+
+ProductFilter.propTypes = {
+  onCategoryChange: PropTypes.func.isRequired,
 };
 
 export default ProductFilter;

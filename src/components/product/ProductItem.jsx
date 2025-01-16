@@ -1,10 +1,11 @@
+import React from "react";
 import { PropTypes } from "prop-types";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { commonCardStyles } from "../../styles/card";
 import { breakpoints, defaultTheme } from "../../styles/themes/default";
 
-const ProductCardWrapper = styled(Link)`
+const ProductCardWrapper = styled.div`
   ${commonCardStyles}
   @media(max-width: ${breakpoints.sm}) {
     padding-left: 0;
@@ -33,13 +34,23 @@ const ProductCardWrapper = styled(Link)`
       color: ${defaultTheme.color_white};
     }
   }
+
+
 `;
 
 const ProductItem = ({ product }) => {
+  const navigate = useNavigate();
+
+  const handleProductClick = () => {
+    navigate("/product/details", { state: { product } });
+  };
+  const formatPrice = (price) => {
+    return new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(price);
+  };
   return (
-    <ProductCardWrapper key={product.id} to="/product/details">
+    <ProductCardWrapper key={product.id} onClick={handleProductClick}>
       <div className="product-img">
-        <img className="object-fit-cover" src={product.imageUrl} />
+        <img className="object-fit-cover" src={product.productImages[0].imageUrl} alt={product.name} />
         <button
           type="button"
           className="product-wishlist-icon flex items-center justify-center bg-white"
@@ -51,7 +62,7 @@ const ProductItem = ({ product }) => {
         <p className="font-bold">{product.name}</p>
         <div className="flex items-center justify-between text-sm font-medium">
           <span className="text-gray">{product.description}</span>
-          <span className="text-outerspace font-bold">{product.sex}</span>
+          <span className="text-outerspace font-bold">{formatPrice(product.price)}</span>
         </div>
       </div>
     </ProductCardWrapper>

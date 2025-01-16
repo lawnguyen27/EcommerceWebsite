@@ -10,6 +10,7 @@ import { breakpoints, defaultTheme } from "../../styles/themes/default";
 import ProductDescriptionTab from "../../components/product/ProductDescriptionTab";
 import ProductSimilar from "../../components/product/ProductSimilar";
 import ProductServices from "../../components/product/ProductServices";
+import { useLocation } from "react-router-dom";
 
 const DetailsScreenWrapper = styled.main`
   margin: 40px 0;
@@ -194,7 +195,12 @@ const ProductDetailsScreen = () => {
       }`}
     ></span>
   ));
-
+  const location = useLocation();
+  const { product } = location.state || {};
+console.log(product)
+  if (!product) {
+    return <div>No product data available</div>;
+  }
   const breadcrumbItems = [
     { label: "Shop", link: "" },
     { label: "Women", link: "" },
@@ -206,9 +212,9 @@ const ProductDetailsScreen = () => {
       <Container>
         <Breadcrumb items={breadcrumbItems} />
         <DetailsContent className="grid">
-          <ProductPreview previewImages={product_one.previewImages} />
+          <ProductPreview previewImages={product.productImages} />
           <ProductDetailsWrapper>
-            <h2 className="prod-title">{product_one.title}</h2>
+            <h2 className="prod-title">{product.name}</h2>
             <div className="flex items-center rating-and-comments flex-wrap">
               <div className="prod-rating flex items-center">
                 {stars}

@@ -1,14 +1,15 @@
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { Container, ContentStylings, Section } from "../../styles/styles";
 import Breadcrumb from "../../components/common/Breadcrumb";
-import { Link } from "react-router-dom";
+import { Link,useLocation } from "react-router-dom";
 import ProductList from "../../components/product/ProductList";
-import { products } from "../../data/data";
+import ProductListByCategory from "../../components/product/ProductListByCategory";
 import Title from "../../components/common/Title";
 import { breakpoints, defaultTheme } from "../../styles/themes/default";
 import ProductFilter from "../../components/product/ProductFilter";
-import axios from "axios";
-import React, { useState, useEffect } from "react";
+import Header from "../../components/header/Header";
+
 const ProductsContent = styled.div`
   grid-template-columns: 320px auto;
   margin: 20px 0;
@@ -87,27 +88,45 @@ const DescriptionContent = styled.div`
   }
 `;
 
-const ProductListScreen = (sex) => {
+const ProductListScreen = () => {
+  const [categoryName, setCategoryName] = useState(null);
+  const [categoryId, setCategoryId] = useState(null);
+  const location = useLocation();
+  const sex = location.state?.sex || "male"; // Default to "male" if not provided
+console.log(sex)
+  useEffect(() => {
+    setCategoryId(null); // Reset categoryId when sex changes
+    setCategoryName(null);
+  }, [sex]);
+  const handleCategoryChange = (newCategory) => {
+    setCategoryName(newCategory.name);
+    setCategoryId(newCategory.categoryId);
+  };
+  
   const breadcrumbItems = [
     { label: "Cửa hàng", link: "/Home" },
     { label: "Sản phẩm", link: "" },
   ];
-console.log(sex)
+
   return (
     <main className="page-py-spacing">
       <Container>
         <Breadcrumb items={breadcrumbItems} />
         <ProductsContent className="grid items-start">
           <ProductsContentLeft>
-            <ProductFilter />
+            <ProductFilter onCategoryChange={handleCategoryChange} />
           </ProductsContentLeft>
           <ProductsContentRight>
             <div className="products-right-top flex items-center justify-between">
-              <h4 className="text-xxl"> {sex.sex === "male" && "Giày Nam"}
-                                        {sex.sex === "female" && "Giày Nữ"}
-                                        {sex.sex == "kid"  && "Giày trẻ em"}
-                                        {sex.sex == "unisex"  && "Giày Unisex"}
-
+              <h4 className="text-xxl">
+              {categoryName ? categoryName : (
+              <>
+              {sex === "male" && "Giày Nam"}
+              {sex === "female" && "Giày Nữ"}
+              {sex=== "kid" && "Giày trẻ em"}
+              {sex === "unisex" && "Giày Unisex"}
+              </>
+               )}
               </h4>
               <ul className="products-right-nav flex items-center justify-end flex-wrap">
                 <li>
@@ -122,7 +141,11 @@ console.log(sex)
                 </li>
               </ul>
             </div>
-            <ProductList sex={sex.sex} />
+            {categoryId ? (
+              <ProductListByCategory cateId={categoryId} />
+            ) : (
+              <ProductList sex={sex} />
+            )}
           </ProductsContentRight>
         </ProductsContent>
       </Container>
